@@ -1,0 +1,156 @@
+<app-fixed-header  [fixedHeader]="fixedHeader"></app-fixed-header>
+
+<div class="app-container" style="margin-top: 70px;">
+  <ul class="company-select app-list" *ngIf="auth.user.companies.length > 1" style="margin-top: 0;">
+    <li>
+      <h4>Dados da empresa</h4>
+      <div class="details">
+        <div class="details-item">
+          <div class="details-item-title">
+            <mat-icon>business</mat-icon>
+            <span>Nome</span>
+          </div>
+          <span>{{auth.company.people.name}}</span>
+        </div>
+        <div class="details-item" *ngIf="auth?.company?.people?.document">
+          <div class="details-item-title">
+            <mat-icon>how_to_reg</mat-icon>
+            <span>{{auth.company.people?.people_type == 0 ? 'CPF' : 'CNPJ'}}</span>
+          </div>
+          <span>{{(auth.company.people.document || '') | mask: auth.company.people?.people_type == 0 ? '000.000.000-00' : '00.000.000/0000-00'}}</span>
+        </div>
+        <div class="details-item" *ngIf="auth?.company?.people?.address?.address">
+          <div class="details-item-title">
+            <mat-icon>home</mat-icon>
+            <span>Endereço</span>
+          </div>
+          <span>{{auth.company.people?.address?.address | slice:0:30 }} ...</span>
+        </div>
+        <div class="details-item" *ngIf="auth?.company?.people?.address?.zip_code">
+          <div class="details-item-title">
+            <mat-icon>password_2</mat-icon>
+            <span>CEP / Número</span>
+          </div>
+          <span>{{auth.company.people?.address?.zip_code || '' | mask:'00000-000'}} - N° {{auth.company.people?.address?.number}}</span>
+        </div>
+        <div class="details-item" *ngIf="auth?.company?.people?.address?.city">
+          <div class="details-item-title">
+            <mat-icon>location_city</mat-icon>
+            <span>Cidade / Estado</span>
+          </div>
+          <span>{{auth.company.people?.address?.city }} - {{auth.company.people?.address?.state }}</span>
+        </div>
+        <div class="details-item" *ngIf="auth?.company?.people?.email">
+          <div class="details-item-title">
+            <mat-icon>alternate_email</mat-icon>
+            <span>Email</span>
+          </div>
+          <span>{{auth.company.people?.email }}</span>
+        </div>
+        <div class="details-item" *ngIf="auth?.company?.people?.phone_commercial">
+          <div class="details-item-title">
+            <mat-icon>phone</mat-icon>
+            <span>Telefone</span>
+          </div>
+          <span>{{auth.company.people?.phone_commercial || '' | mask: '(00) 00000-0000' }}</span>
+        </div>
+      </div>
+
+      <div class="select-company" style="width: 100%">
+        <button mat-button class="button-blue-border-white" style="width: 100%;" routerLink="../my-companies"><mat-icon>beenhere</mat-icon> Selecionar Outra Empresa</button>
+      </div>
+    </li>
+  </ul>
+
+  <ul class="company-select app-list" style="margin-top: 0;">
+    <li>
+      <h4>Dados do usuário</h4>
+      <div class="details">
+        <div class="details-item">
+          <div class="details-item-title">
+            <mat-icon>business</mat-icon>
+            <span>Nome</span>
+          </div>
+          <span>{{getFisrtName()}}</span>
+        </div>
+        <div class="details-item" *ngIf="auth?.user?.people?.document">
+          <div class="details-item-title">
+            <mat-icon>how_to_reg</mat-icon>
+            <span>{{auth.user.people?.people_type == 0 ? 'CPF' : 'CNPJ'}}</span>
+          </div>
+          <span>{{(auth.user.people.document || '') | mask: auth.user.people?.people_type == 0 ? '000.000.000-00' : '00.000.000/0000-00'}}</span>
+        </div>
+        <div class="details-item" *ngIf="auth?.user?.people?.address?.address">
+          <div class="details-item-title">
+            <mat-icon>home</mat-icon>
+            <span>Endereço</span>
+          </div>
+          <span>{{auth.user?.people?.address?.address | slice:0:30 }} ...</span>
+        </div>
+        <div class="details-item" *ngIf="auth?.user?.people?.address?.zip_code">
+          <div class="details-item-title">
+            <mat-icon>password_2</mat-icon>
+            <span>CEP / Número</span>
+          </div>
+          <span>{{auth.user?.people?.address?.zip_code || '' | mask:'00000-000'}} - N° {{auth.user.people?.address?.number}}</span>
+        </div>
+        <div class="details-item" *ngIf="auth?.user?.people?.address?.city">
+          <div class="details-item-title">
+            <mat-icon>location_city</mat-icon>
+            <span>Cidade / Estado</span>
+          </div>
+          <span>{{auth.user.people?.address?.city }} - {{auth.user.people?.address?.state }}</span>
+        </div>
+        <div class="details-item" *ngIf="auth?.user?.email">
+          <div class="details-item-title">
+            <mat-icon>alternate_email</mat-icon>
+            <span>Email</span>
+          </div>
+          <span>{{auth?.user?.email}}</span>
+        </div>
+        <div class="details-item" *ngIf="auth?.user?.people?.phone_commercial">
+          <div class="details-item-title">
+            <mat-icon>phone</mat-icon>
+            <span>Telefone</span>
+          </div>
+          <span>{{auth.user.people?.phone_commercial || '' | mask: '(00) 00000-0000' }}</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <ul class="company-select app-list" style="margin-top: 0;">
+    <li>
+      <h4>Dados carregados</h4>
+      <div class="details">
+        <div class="details-item">
+          <div class="details-item-title">
+            <mat-icon>person</mat-icon>
+            <span>Clientes</span>
+          </div>
+          <span [@numberAnimation]="clientCount">{{ clientCount }}</span>
+        </div>
+        <div class="details-item">
+          <div class="details-item-title">
+            <mat-icon>conveyor_belt</mat-icon>
+            <span>Produtos</span>
+          </div>
+          <span [@numberAnimation]="productCount">{{ productCount }}</span>
+        </div>
+        <div class="details-item">
+          <div class="details-item-title">
+            <mat-icon>store</mat-icon>
+            <span>Vendas & Orçamentos</span>
+          </div>
+          <span [@numberAnimation]="salesCount">{{ salesCount }}</span>
+        </div>
+      </div>
+    </li>
+  </ul>
+
+  <div class="logout" style="width: 100%">
+    <button (click)="logout()" mat-button class="button-red-border-white" style="width: 100%;"><mat-icon>logout</mat-icon> Sair</button>
+  </div>
+</div>
+
+<app-loading-full [loadingFull]="loadingFull"></app-loading-full>
