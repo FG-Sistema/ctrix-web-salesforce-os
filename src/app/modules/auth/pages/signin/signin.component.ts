@@ -60,7 +60,7 @@ export class SigninComponent {
         map((auth) => {
           console.log(auth);
           this.storageService.setAuth(auth);
-          this.router.navigate(['/dashboard']);
+          this.router.navigate(['/sale']);
         })
       ).subscribe();
     }

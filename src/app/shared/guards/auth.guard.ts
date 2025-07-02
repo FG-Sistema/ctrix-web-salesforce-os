@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
     return new Promise((resolve, reject) => {
       const auth = this.storageService.getAuth();
       if (auth) {
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/sale']);
         return resolve(false);
       } else {
         return resolve(true);

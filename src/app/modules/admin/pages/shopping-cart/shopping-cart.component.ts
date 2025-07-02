@@ -259,7 +259,7 @@ export class ShoppingCartComponent {
     this.storageService.setList('SalesForce/ShoppingCart', this.ShoppingCart);
     this.ShoppingCart = this.storageService.getList('SalesForce/ShoppingCart');
 
-    this.router.navigate(['sale-report-view/' + sale.id]);
+    this.router.navigate(['../sale']);
   }
 
   saveShoppingCart() {

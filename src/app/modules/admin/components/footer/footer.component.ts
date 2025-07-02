@@ -19,7 +19,6 @@ export class FooterComponent {
 
   activeFooterRouter(): boolean {
     switch (this.router.url) {
-      case '/dashboard': return true;
       case '/sale': return true;
       case '/shopping-cart': return true;
       case '/charts': return true;

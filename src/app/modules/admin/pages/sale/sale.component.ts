@@ -45,7 +45,7 @@ export class SaleComponent implements OnInit {
   public vDateFilter = new Date();
 
   @Output() public fixedHeader: FixedHeader = {
-    title: 'Vendas e Orçamentos',
+    title: 'Orçamentos',
     routerBack: '../shopping-cart',
     showBackButton: false,
     showSearchButton: true,

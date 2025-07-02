@@ -1,5 +1,4 @@
 import { Routes } from '@angular/router';
-import { DashboardComponent } from './pages/dashboard/dashboard.component';
 import { ShoppingCartComponent } from './pages/shopping-cart/shopping-cart.component';
 import { ProductsComponent } from './pages/products/products.component';
 import { MyProfileComponent } from './pages/my-profile/my-profile.component';
@@ -8,19 +7,13 @@ import { SaleComponent } from './pages/sale/sale.component';
 import { MyCompaniesComponent } from './pages/my-companies/my-companies.component';
 import { SaleReportViewComponent } from './pages/reports/sale-report-view/sale-report-view.component';
 import { HelperComponent } from './pages/helper/helper.component';
-import { ChartsComponent } from './pages/charts/charts.component';
 import { animate } from '@angular/animations';
 
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'sale',
     pathMatch: 'full'
-  },
-  {
-    path: 'dashboard',
-    component: DashboardComponent,
-    data: { animate: 'DashboardPage' }
   },
   {
     path: 'shopping-cart',
@@ -61,10 +54,5 @@ export const routes: Routes = [
     path: 'helper',
     component: HelperComponent,
     data: { animate: 'HelperPage' }
-  },
-  {
-    path: 'charts',
-    component: ChartsComponent,
-    data: { animate: 'ChartsPage' }
   }
 ];
