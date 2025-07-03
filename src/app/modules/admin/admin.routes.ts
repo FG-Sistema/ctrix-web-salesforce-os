@@ -8,6 +8,7 @@ import { MyCompaniesComponent } from './pages/my-companies/my-companies.componen
 import { SaleReportViewComponent } from './pages/reports/sale-report-view/sale-report-view.component';
 import { HelperComponent } from './pages/helper/helper.component';
 import { animate } from '@angular/animations';
+import { VehicleComponent } from './pages/vehicle/vehicle.component';
 
 export const routes: Routes = [
   {
@@ -54,5 +55,10 @@ export const routes: Routes = [
     path: 'helper',
     component: HelperComponent,
     data: { animate: 'HelperPage' }
-  }
+  },
+  {
+    path: 'vehicles',
+    component: VehicleComponent,
+    data: { animate: 'VehiclePage' }
+  },
 ];

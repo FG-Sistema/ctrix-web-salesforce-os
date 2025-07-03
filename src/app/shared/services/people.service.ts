@@ -21,6 +21,7 @@ export class PeopleService {
       .set('orderBy', orderBy || 'name')
       .set('page', page || '1')
       .set('address', true)
+      .set('vehicles', true)
       .set('limit', limit || '10');
 
     if (paramsArray && paramsArray.length > 0) {

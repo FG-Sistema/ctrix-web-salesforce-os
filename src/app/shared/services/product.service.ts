@@ -15,7 +15,6 @@ export class ProductService {
 
   index(search: string, sorteBy?: string, orderBy?: string, page?: number, limit?: number): Observable<any> {
     const params = new HttpParams()
-      .set('role', '0')
       .set('search', search)
       .set('sortedBy', sorteBy || 'name')
       .set('orderBy', orderBy || 'name')

@@ -205,6 +205,12 @@ export class ShoppingCartComponent {
     this.ShoppingCart = this.storageService.getList('SalesForce/ShoppingCart');
   }
 
+  removeVehicle(): void {
+    this.ShoppingCart.vehicle = null;
+    this.storageService.setList('SalesForce/ShoppingCart', this.ShoppingCart);
+    this.ShoppingCart = this.storageService.getList('SalesForce/ShoppingCart');
+  }
+
   getSaleProducts(): any[] {
     return this.ShoppingCart.products.map(product => {
       return {
@@ -225,6 +231,7 @@ export class ShoppingCartComponent {
       id: this.ShoppingCart?.id || 'new',
       code: this.ShoppingCart?.code || '',
       peopleId: this.ShoppingCart.people.id,
+      vehicleId: this.ShoppingCart.vehicle?.id || '',
       userId: auth.user.people.id,
       categoryId: auth.company.config.sale_category_default_id,
       bankAccountId: auth.company.config.sale_bank_account_default_id,

@@ -194,6 +194,7 @@ export class SaleComponent implements OnInit {
     const saleSync = {
       id: sale.id,
       peopleId: sale.people.id,
+      vehicleId: sale.vehicle?.id || '',
       userId: auth.user.people.id,
       categoryId: auth.company.config.sale_category_default_id,
       bankAccountId: auth.company.config.sale_bank_account_default_id,

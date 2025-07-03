@@ -4,7 +4,7 @@
   <ul class="app-list" style="margin-top: 70px;">
     <li *ngFor="let product of ShoppingCart?.products">
       <div class="title">
-        <h3>{{ product?.shop?.name }}</h3>
+        <h3>{{ product?.shop?.name || product?.description }}</h3>
       </div>
 
       <div class="insert-remove-item">
@@ -42,6 +42,24 @@
     <div class="remove-selected" *ngIf="ShoppingCart?.people" (click)="removePeople()">
       <h4>- Remover cliente selecionado</h4>
     </div>
+
+    <div class="search-and-select" *ngIf="ShoppingCart?.people && !ShoppingCart?.vehicle">
+      <button mat-button class="button-blue-border-white" routerLink="../vehicles"><mat-icon>add</mat-icon> Selecionar veiculo</button>
+    </div>
+
+    <li class="details-people" *ngIf="ShoppingCart?.vehicle">
+      <div class="title">
+        <h3>{{ ShoppingCart.vehicle.model }}</h3>
+        <p>{{ ShoppingCart.vehicle.brand || '' }}</p>
+      </div>
+      <div class="description-values" style="border: none; padding-bottom: 0;">
+        <span class="value">Placa: <b>{{ ShoppingCart.vehicle.license_plate }}</b></span>
+      </div>
+    </li>
+
+    <div class="remove-selected" *ngIf="ShoppingCart?.vehicle" (click)="removeVehicle()">
+      <h4>- Remover veiculo selecionado</h4>
+    </div>
   </ul>
 
   <div class="btn-add" style="width: 100%; margin-bottom: 90px;">
@@ -55,7 +73,7 @@
   <ul class="sale-details">
     <li>
       <span style="opacity: 0.4;">Produto</span>
-      <span>{{productSelected?.shop?.name}}</span>
+      <span>{{(productSelected?.shop?.name || productSelected?.description) || 'Sem descrição'}}</span>
     </li>
   </ul>
   <div class="dialog-actions">

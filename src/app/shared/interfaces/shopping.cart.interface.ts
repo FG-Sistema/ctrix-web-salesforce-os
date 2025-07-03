@@ -10,4 +10,5 @@ export interface ShoppingCart {
   people?: any;
   status?: number;
   date_sale?: Date;
+  vehicle?: any;
 }
