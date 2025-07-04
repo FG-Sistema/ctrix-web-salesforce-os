@@ -237,6 +237,7 @@ export class ShoppingCartComponent {
       bankAccountId: auth.company.config.sale_bank_account_default_id,
       role: 1,
       people: this.ShoppingCart.people,
+      vehicle: this.ShoppingCart.vehicle,
       status: this.ShoppingCart.status,
       date_sale: this.ShoppingCart.date_sale || (new Date().toISOString()),
       amount: this.getTotal(),
