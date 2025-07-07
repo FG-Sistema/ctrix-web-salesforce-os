@@ -6,5 +6,6 @@ export interface SaleProduct {
   amount: number;
   cost_value: number;
   subtotal: number;
-  shop: ProductShop
+  shop: ProductShop,
+  product?: any;
 }

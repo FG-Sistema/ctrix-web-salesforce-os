@@ -129,7 +129,8 @@ export class AdminComponent implements OnInit {
         product_id: product?.product_id,
         amount: product?.amount,
         cost_value: product?.cost_value,
-        subtotal: product?.subtotal
+        subtotal: product?.subtotal,
+        description: product?.description,
       }
     });
   }

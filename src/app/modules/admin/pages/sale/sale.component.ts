@@ -162,6 +162,7 @@ export class SaleComponent implements OnInit {
       id: sale.id || '',
       code: sale.code || '',
       people: sale.people || {},
+      vehicle: sale.vehicle || {},
       discount: sale.discount || 0,
       typeDiscount: sale.discount_type || 0,
       products: [],
@@ -174,11 +175,12 @@ export class SaleComponent implements OnInit {
       for (let i = 0; i < sale.products.length; i++) {
         shoppingCart.products.push({
           product_id: sale.products[i].product_id || '',
-          description: sale.products[i].description || '',
+          description: sale.products[i].description ||'',
           amount: sale.products[i].amount || 0,
           cost_value: sale.products[i].cost_value || 0,
           subtotal: sale.products[i].subtotal || 0,
-          shop: (sale.products[i]?.product?.shop || sale.products[i]?.shop) || {}
+          shop: (sale.products[i]?.product?.shop || sale.products[i]?.shop) || {},
+          product: sale.products[i]?.product || {}
         });
       }
     }
@@ -246,7 +248,8 @@ export class SaleComponent implements OnInit {
         product_id: product?.product_id,
         amount: product?.amount,
         cost_value: product?.cost_value,
-        subtotal: product?.subtotal
+        subtotal: product?.subtotal,
+        description: product?.description || '',
       }
     });
   }

@@ -218,7 +218,8 @@ export class ShoppingCartComponent {
         amount: product.amount,
         cost_value: product.cost_value,
         subtotal: product.subtotal,
-        shop: product?.shop
+        shop: product?.shop,
+        description: product.description
       }
     });
   }
