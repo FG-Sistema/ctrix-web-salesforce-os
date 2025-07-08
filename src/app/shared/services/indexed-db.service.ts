@@ -154,9 +154,9 @@ export class IndexedDbService {
 
     // Filtrar os dados pelos campos name, document, social_name
     const filteredSales = allSales.filter(sale => {
-      const nameMatch = sale.people?.name?.toLowerCase().includes(searchText.toLowerCase());
-      const documentMatch = sale.people?.document?.toLowerCase().includes(searchText.toLowerCase());
-      const socialNameMatch = sale.people?.social_name?.toLowerCase().includes(searchText.toLowerCase());
+      const nameMatch = sale?.people?.name?.toLowerCase().includes(searchText.toLowerCase());
+      const documentMatch = sale?.people?.document?.toLowerCase().includes(searchText.toLowerCase());
+      const socialNameMatch = sale?.people?.social_name?.toLowerCase().includes(searchText.toLowerCase());
 
       // Converter a data de venda corretamente
       const dateSale = new Date(sale.date_sale);
@@ -167,7 +167,11 @@ export class IndexedDbService {
 
       const dateInRange = dateSale >= firstDayOfMonth && dateSale <= lastDayOfMonth;
 
-      return (nameMatch || documentMatch || socialNameMatch) && dateInRange;
+      if (!sale?.people) {
+        return dateInRange
+      } else {
+        return (nameMatch || documentMatch || socialNameMatch) && dateInRange;
+      }
     });
 
     return filteredSales;

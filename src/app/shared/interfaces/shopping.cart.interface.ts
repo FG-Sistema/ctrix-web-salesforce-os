@@ -7,6 +7,8 @@ export interface ShoppingCart {
   typeDiscount: number;
   products: SaleProduct[];
   observation: string;
+  client_description?: string;
+  vehicle_description?: string;
   people?: any;
   status?: number;
   date_sale?: Date;

@@ -25,6 +25,10 @@
       <span class="title-text">Dados do cliente</span>
     </div>
 
+    <div class="product-obs" *ngIf="!ShoppingCart?.people">
+      <input type="text" (input)="setClientDescription($event)" [(ngModel)]="ShoppingCart.client_description" maxlength="100" placeholder="Descrição do cliente.">
+    </div>
+
     <div class="search-and-select" *ngIf="!ShoppingCart?.people">
       <button mat-button class="button-blue-border-white" routerLink="../people"><mat-icon>add</mat-icon> Selecionar cliente</button>
     </div>
@@ -41,6 +45,15 @@
 
     <div class="remove-selected" *ngIf="ShoppingCart?.people" (click)="removePeople()">
       <h4>- Remover cliente selecionado</h4>
+    </div>
+
+    <div class="selection-title">
+      <mat-icon>directions_car</mat-icon>
+      <span class="title-text">Dados do veículo</span>
+    </div>
+
+    <div class="product-obs" *ngIf="!ShoppingCart?.vehicle">
+      <input type="text" (input)="setVehicleDescription($event)" [(ngModel)]="ShoppingCart.vehicle_description" maxlength="100" placeholder="Descrição do veículo.">
     </div>
 
     <div class="search-and-select" *ngIf="ShoppingCart?.people && !ShoppingCart?.vehicle">

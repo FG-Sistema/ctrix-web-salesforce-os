@@ -101,8 +101,8 @@
           <div *ngIf="sale.isOff" class="offiline">Off-line</div>
 
           <div class="title">
-            <h3>{{sale.code ? sale.code + ' - ' : ''}} {{ sale.people.name }}</h3>
-            <p>{{ sale.people.fantasy_name || '' }}</p>
+            <h3>{{sale.code ? sale.code + ' - ' : ''}} {{ sale?.people?.name || sale?.client_description || '' }}</h3>
+            <p>{{ sale?.people?.fantasy_name || '' }}</p>
           </div>
 
           <div class="description-values">
@@ -139,7 +139,7 @@
     </li>
     <li>
       <span style="opacity: 0.4;">Cliente</span>
-      <span>{{saleSelected?.people?.name}}</span>
+      <span>{{saleSelected?.people?.name || saleSelected?.client_description || ''}}</span>
     </li>
     <li *ngIf="saleSelected?.address">
       <span style="opacity: 0.4;">Cidade & Estado</span>
@@ -147,7 +147,7 @@
     </li>
     <li style="border-top: 1px solid #ddd; padding-top: 10px; margin-top: 10px;">
       <span style="opacity: 0.4;">Placa</span>
-      <span>{{ saleSelected?.vehicle?.license_plate || ''}}</span>
+      <span>{{ saleSelected?.vehicle?.license_plate || saleSelected.vehicle_description ||''}}</span>
     </li>
   </ul>
   <div class="dialog-actions">

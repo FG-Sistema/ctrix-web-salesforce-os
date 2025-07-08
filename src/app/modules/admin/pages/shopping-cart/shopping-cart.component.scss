@@ -98,7 +98,6 @@
 .product-obs {
   width: 100%;
   display: flex;
-  padding: 15px 0;
   flex-direction: column;
 
   .product-obs-title {
@@ -114,10 +113,9 @@
     }
   }
 
-  textarea {
+  textarea, input {
     width: 100%;
     border: 1px solid rgba(149, 149, 149, 0.4);
-    height: 90px;
     resize: none;
     padding: 10px;
     font-size: 13px;

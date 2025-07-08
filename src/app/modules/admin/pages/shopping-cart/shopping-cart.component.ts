@@ -199,6 +199,20 @@ export class ShoppingCartComponent {
     this.ShoppingCart = this.storageService.getList('SalesForce/ShoppingCart');
   }
 
+  setClientDescription(obs: any) {
+    this.ShoppingCart.client_description = (obs.target as HTMLTextAreaElement).value;
+
+    this.storageService.setList('SalesForce/ShoppingCart', this.ShoppingCart);
+    this.ShoppingCart = this.storageService.getList('SalesForce/ShoppingCart');
+  }
+
+  setVehicleDescription(obs: any) {
+    this.ShoppingCart.vehicle_description = (obs.target as HTMLTextAreaElement).value;
+
+    this.storageService.setList('SalesForce/ShoppingCart', this.ShoppingCart);
+    this.ShoppingCart = this.storageService.getList('SalesForce/ShoppingCart');
+  }
+
   removePeople(): void {
     this.ShoppingCart.people = null;
     this.storageService.setList('SalesForce/ShoppingCart', this.ShoppingCart);
@@ -231,8 +245,8 @@ export class ShoppingCartComponent {
     const sale = {
       id: this.ShoppingCart?.id || 'new',
       code: this.ShoppingCart?.code || '',
-      peopleId: this.ShoppingCart.people.id,
-      vehicleId: this.ShoppingCart.vehicle?.id || '',
+      peopleId: this.ShoppingCart?.people?.id || '',
+      vehicleId: this.ShoppingCart?.vehicle?.id || '',
       userId: auth.user.people.id,
       categoryId: auth.company.config.sale_category_default_id,
       bankAccountId: auth.company.config.sale_bank_account_default_id,
@@ -247,6 +261,8 @@ export class ShoppingCartComponent {
       net_total: this.getTotalDiscount(),
       products: this.getSaleProducts(),
       note: this.ShoppingCart.observation,
+      client_description: this.ShoppingCart.client_description || '',
+      vehicle_description: this.ShoppingCart.vehicle_description || '',
       isOff: true
     }
 

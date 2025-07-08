@@ -167,6 +167,8 @@ export class SaleComponent implements OnInit {
       typeDiscount: sale.discount_type || 0,
       products: [],
       observation: sale.note || '',
+      client_description: sale.client_description || '',
+      vehicle_description: sale.vehicle_description || '',
       status: sale.status || 0,
       date_sale: sale.date_sale || new Date()
     };
@@ -192,10 +194,11 @@ export class SaleComponent implements OnInit {
   syncSale(sale: any): void {
     this.loadingFull.active = true;
 
+
     const auth = this.storageService.getAuth();
     const saleSync = {
       id: sale.id,
-      peopleId: sale.people.id,
+      peopleId: sale?.people?.id || auth.company.config.sale_people_default_id,
       vehicleId: sale.vehicle?.id || '',
       userId: auth.user.people.id,
       categoryId: auth.company.config.sale_category_default_id,
@@ -208,7 +211,9 @@ export class SaleComponent implements OnInit {
       discount: sale.discount,
       net_total: sale.net_total,
       products: this.getSaleProducts(sale),
-      note: sale.note
+      note: sale.note,
+      client_description: sale.client_description || '',
+      vehicle_description: sale.vehicle_description || '',
     };
 
     this.saleService
