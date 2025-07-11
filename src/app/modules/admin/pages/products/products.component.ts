@@ -105,7 +105,8 @@ export class ProductsComponent implements OnInit {
         amount: product?.shop?.minimum_sales_quantity || 1,
         cost_value: product?.shop?.sale_value || 0,
         subtotal: product?.shop?.minimum_sales_quantity * product?.shop?.sale_value || 0,
-        shop: product.shop
+        shop: product.shop,
+        product: product,
       });
     }
 

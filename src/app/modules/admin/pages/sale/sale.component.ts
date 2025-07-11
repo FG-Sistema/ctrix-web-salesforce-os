@@ -255,6 +255,7 @@ export class SaleComponent implements OnInit {
         cost_value: product?.cost_value,
         subtotal: product?.subtotal,
         description: product?.description || '',
+        product: product?.product || {},
       }
     });
   }

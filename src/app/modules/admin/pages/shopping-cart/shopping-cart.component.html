@@ -7,6 +7,11 @@
         <h3>{{ product?.shop?.name || product?.description || product?.product?.name }}</h3>
       </div>
 
+      <div class="description-values">
+        <span>Marca:</span>
+        <span>{{ product?.product?.brand?.name || '...'}}</span>
+      </div>
+
       <div class="insert-remove-item">
         <button class="remove-button" mat-icon-button (click)="removeProduct(product)"><mat-icon>remove</mat-icon></button>
         <input class="transparent-input t-al-center"[value]="getAmount(product)" (change)="changeAmount(product, $event)" type="number"/>
