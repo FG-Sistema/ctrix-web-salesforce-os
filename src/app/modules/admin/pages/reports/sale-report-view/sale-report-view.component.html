@@ -43,44 +43,15 @@
 
   <section class="products-grid">
     <ul class="products-grid-header">
-      <li style="width: 55%">Produto/Serviço</li>
+      <li style="width: 80%">Produto/Serviço</li>
       <!-- <li style="width: 30%">Detalhes do item</li> -->
       <li style="text-align: right">Quantidade</li>
-      <li style="text-align: right">Valor</li>
-      <li style="text-align: right">Subtotal</li>
     </ul>
 
     <ul class="products-grid-list" *ngFor="let product of sale?.products; index as i">
-      <li style="width: 55%">{{product?.product?.shop?.name || product?.shop?.name}}</li>
+      <li style="width: 80%">{{product?.product?.shop?.name || product?.shop?.name}}</li>
       <!-- <li style="width: 30%">{{product.description}}</li> -->
       <li style="text-align: right">{{product?.amount}}</li>
-      <li style="text-align: right">{{product?.cost_value | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</li>
-      <li style="text-align: right">{{product?.subtotal | currency:'BRL':'symbol':'1.2-2':'pt-BR' }}</li>
-    </ul>
-  </section>
-
-  <section class="subtotal">
-    <div class="values">
-      <p class="title">Valor Total</p>
-      <p>{{sale?.amount || 0 | currency:'BRL':'symbol':'1.2-2':'pt-BR'}}</p>
-    </div>
-    <div class="values">
-      <p class="title">Desconto</p>
-      <p>{{sale?.discount || 0 | currency:'BRL':'symbol':'1.2-2':'pt-BR'}}</p>
-    </div>
-    <div class="values">
-      <p class="title">Total líquido</p>
-      <p>{{sale?.net_total || 0 | currency:'BRL':'symbol':'1.2-2':'pt-BR'}}</p>
-    </div>
-  </section>
-
-  <section class="products-grid" *ngIf="sale?.note">
-    <ul class="products-grid-header">
-      <li style="text-align: left">Observação da Venda</li>
-    </ul>
-
-    <ul class="products-grid-list">
-      <li style="text-align: left">{{sale?.note}}</li>
     </ul>
   </section>
 
