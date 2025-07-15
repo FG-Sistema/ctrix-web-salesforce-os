@@ -49,7 +49,7 @@
     </ul>
 
     <ul class="products-grid-list" *ngFor="let product of sale?.products; index as i">
-      <li style="width: 80%">{{product?.product?.shop?.name || product?.shop?.name}}</li>
+      <li style="width: 80%">{{product?.product?.shop?.name || product?.shop?.name || product?.description }}</li>
       <!-- <li style="width: 30%">{{product.description}}</li> -->
       <li style="text-align: right">{{product?.amount}}</li>
     </ul>
