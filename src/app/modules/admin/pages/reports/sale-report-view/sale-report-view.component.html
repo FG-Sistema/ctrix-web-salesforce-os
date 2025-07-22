@@ -41,6 +41,16 @@
     <p style="margin-top: 5px">{{sale?.people?.address?.address}}, {{sale?.people?.address?.number}} - {{sale?.people?.address?.complement}} - {{sale?.people?.address?.district}} - {{sale?.people?.address?.city}} - {{sale?.people?.address?.state}} - CEP: {{sale?.people?.address?.zip_code}}</p>
   </section>
 
+  <section class="people">
+    <div class="namePhone" *ngIf="sale?.vehicle">
+      <p>PLACA: {{sale?.vehicle?.license_plate}}</p>
+    </div>
+
+    <div class="namePhone" *ngIf="!sale?.vehicle">
+      <p>PLACA: {{sale?.vehicle_description}}</p>
+    </div>
+  </section>
+
   <section class="products-grid">
     <ul class="products-grid-header">
       <li style="width: 80%">Produto/Serviço</li>
